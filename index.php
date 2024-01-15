@@ -1,3 +1,5 @@
 <?php
-    echo "Hi";
+    require_once "vendor/autoload.php";
+
+    echo phpinfo();
 ?>
