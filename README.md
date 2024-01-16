@@ -9,3 +9,13 @@ Project as part of learning php by [this video](https://youtu.be/vAYzrTyUZF8)
 ```shell
 lando start
 ```
+
+### Settings
+
+```shell
+lando composer install
+```
+or
+```shell
+composer install
+```
