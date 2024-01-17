@@ -24,7 +24,15 @@
             if (!$route) {
                 $this->pathNotFound();
             }
-            $route->getAction()();
+            if (is_array($route->getAction())) {
+                [$controller, $action] = $route->getAction();
+
+                $controller = new $controller();  // create class instance by path
+                $controller->$action();
+            }
+            else {
+                $route->getAction()();  // for anonymous function
+            }
         }
 
         public function pathNotFound() {

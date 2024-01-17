@@ -4,9 +4,8 @@
     class App {
         public function run(): void {
             $router = new Router\Router();
-            $uri = $_SERVER["REQUEST_URI"];
-            $method = $_SERVER["REQUEST_METHOD"];
-            $router->dispatch(uri:$uri, method:$method);
+            $request = Http\Request::createFromGlobals();
+            $router->dispatch(uri:$request->uri(), method:$request->method());
         }
     }
 ?>
