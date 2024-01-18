@@ -1,5 +1,5 @@
 <?php
-    namespace App;  // autoload (check composer.json)
+    namespace App\Kernel;  // autoload (check composer.json)
 
     class App {
         public function run(): void {

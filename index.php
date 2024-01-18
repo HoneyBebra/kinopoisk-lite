@@ -1,7 +1,7 @@
 <?php
     require_once "vendor/autoload.php";
 
-    use App\App;
+    use App\Kernel\App;
 
     $app = new App();
 

@@ -1,5 +1,5 @@
 <?php
-    namespace App\Http;
+    namespace App\Kernel\Http;
 
     class Request {  // class for safe use of global vars
             public function __construct(
