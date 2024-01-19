@@ -48,7 +48,7 @@
         }
 
         private function getRoutes(): array {
-            return require_once "config/routes.php";
+            return require_once APP_PATH."/config/routes.php";
         }
     }
 ?>

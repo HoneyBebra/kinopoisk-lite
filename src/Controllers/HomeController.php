@@ -3,7 +3,7 @@
 
     class HomeController {
         public function index(): void {
-            include("views/pages/home.php");
+            include(APP_PATH."/views/pages/home.php");
         }
     }
 ?>

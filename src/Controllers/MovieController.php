@@ -3,7 +3,7 @@
 
     class MovieController {
         public function index(): void {
-            include("views/pages/movies.php");
+            include(APP_PATH."/views/pages/movies.php");
         }
     }
 ?>
