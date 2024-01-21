@@ -1,13 +1,15 @@
 <?php
     namespace App\Kernel\Router;
 
+    use App\Kernel\View\View;
+
     class Router {
         public array $routes = [
             "GET" => [],
             "POST" => []
         ];
 
-        public function __construct() {
+        public function __construct(private View $view) {
             $this->initRoutes();
         }
 
@@ -28,10 +30,12 @@
                 [$controller, $action] = $route->getAction();
 
                 $controller = new $controller();  // create class instance by path
-                $controller->$action();
+
+                call_user_func([$controller, "setView"], $this->view);
+                call_user_func([$controller, $action]);
             }
             else {
-                $route->getAction()();  // for anonymous function
+                call_user_func($route->getAction());  // for anonymous function
             }
         }
 

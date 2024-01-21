@@ -1,9 +1,11 @@
 <?php
     namespace App\Controllers;
 
-    class HomeController {
+    use App\Kernel\Controller\Controller;
+
+    class HomeController extends Controller{
         public function index(): void {
-            include(APP_PATH."/views/pages/home.php");
+            $this->getView("home");
         }
     }
 ?>

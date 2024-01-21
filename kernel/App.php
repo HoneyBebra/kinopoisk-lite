@@ -1,11 +1,20 @@
 <?php
     namespace App\Kernel;  // autoload (check composer.json)
 
-    class App {
+use App\Kernel\Container\Container;
+
+    class App { 
+        private Container $container;
+
+        public function __construct() {
+            $this->container = new Container();
+        }
+
         public function run(): void {
-            $router = new Router\Router();
-            $request = Http\Request::createFromGlobals();
-            $router->dispatch(uri:$request->uri(), method:$request->method());
+            $this->container->router->dispatch(
+                uri:$this->container->request->uri(), 
+                method:$this->container->request->method()
+            );
         }
     }
 ?>
