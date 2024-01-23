@@ -1,6 +1,7 @@
 <?php
     namespace App\Kernel\Router;
 
+    use App\Kernel\Http\Request;
     use App\Kernel\View\View;
 
     class Router {
@@ -9,7 +10,10 @@
             "POST" => []
         ];
 
-        public function __construct(private View $view) {
+        public function __construct(
+            private View $view,
+            private Request $request
+        ) {
             $this->initRoutes();
         }
 
@@ -32,6 +36,7 @@
                 $controller = new $controller();  // create class instance by path
 
                 call_user_func([$controller, "setView"], $this->view);
+                call_user_func([$controller, "setRequest"], $this->request);
                 call_user_func([$controller, $action]);
             }
             else {
@@ -41,6 +46,7 @@
 
         public function pathNotFound() {
             echo "<h1>Error 404, wrong path<h1>";
+            // echo dd($this->routes); // for check routes
             exit;
         }
 

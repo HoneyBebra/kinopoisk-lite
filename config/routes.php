@@ -11,6 +11,14 @@
         Route::get(uri:"/movies", action:[
             MovieController::class, 
             "index"
+        ]),
+        Route::get(uri:"/admin/movies/add", action:[
+            MovieController::class, 
+            "add"
+        ]),
+        Route::post(uri:"/admin/movies/add", action:[
+            MovieController::class, 
+            "store"
         ])
     ]
 ?>
